@@ -7,19 +7,19 @@ rm -rf ./*
 cmake ../sources/
 
 echo -n "-- Копирование файлов: "
-cp ../sources/6.lamp.fs 6.lamp.fs
-cp ../sources/6.lamp.vs 6.lamp.vs
-cp ../sources/6.multiple_lights.fs 6.multiple_lights.fs
-cp ../sources/6.multiple_lights.vs 6.multiple_lights.vs
+# cp ../sources/6.lamp.fs 6.lamp.fs
+# cp ../sources/6.lamp.vs 6.lamp.vs
+# cp ../sources/6.multiple_lights.fs 6.multiple_lights.fs
+# cp ../sources/6.multiple_lights.vs 6.multiple_lights.vs
 
-cp -R ../sources/resources/ resources/
+# cp -R ../sources/resources/ resources/
 echo "Готово"
 
 while true
 do
 	clear
 	echo -n "-- Применение стилей: "
-	find ../sources/ -name '*.hpp' -or -name '*.cpp' | xargs clang-format -i -style=file $1
+	# find ../sources/ -name '*.hpp' -or -name '*.cpp' | xargs clang-format -i -style=file $1
 	echo "Готово"
 
 	echo "-- Компиляция: Запуск"
@@ -37,12 +37,6 @@ do
 	if [ "$operation" ] && [ "$operation" = "copy" ]
 	then
 		echo -n "-- Копирование файлов: "
-		cp ../sources/6.lamp.fs 6.lamp.fs
-		cp ../sources/6.lamp.vs 6.lamp.vs
-		cp ../sources/6.multiple_lights.fs 6.multiple_lights.fs
-		cp ../sources/6.multiple_lights.vs 6.multiple_lights.vs
-
-		cp -R ../sources/resources/ resources/
 		echo "Готово"
 	fi
 done
