@@ -15,11 +15,17 @@ echo -n "-- Копирование файлов: "
 # cp -R ../sources/resources/ resources/
 echo "Готово"
 
+echo -n "-- Компиляция шейдеров: "
+mkdir -p shaders
+${VULKAN_SDK}Bin/glslangValidator -V ../sources/shaders/shader.vert -o shaders/vert.bin
+${VULKAN_SDK}Bin/glslangValidator -V ../sources/shaders/shader.frag -o shaders/frag.bin
+echo "Готово"
+
 while true
 do
 	clear
 	echo -n "-- Применение стилей: "
-	# find ../sources/ -name '*.hpp' -or -name '*.cpp' | xargs clang-format -i -style=file $1
+	find ../sources/ -name '*.hpp' -or -name '*.cpp' | xargs clang-format -i -style=file $1
 	echo "Готово"
 
 	echo "-- Компиляция: Запуск"
@@ -37,6 +43,14 @@ do
 	if [ "$operation" ] && [ "$operation" = "copy" ]
 	then
 		echo -n "-- Копирование файлов: "
+		echo "Готово"
+	fi
+	if [ "$operation" ] && [ "$operation" = "shaders" ]
+	then
+		echo -n "-- Компиляция шейдеров: "
+		mkdir -p shaders
+		${VULKAN_SDK}Bin/glslangValidator -V ../sources/shaders/shader.vert -o shaders/vert.bin
+		${VULKAN_SDK}Bin/glslangValidator -V ../sources/shaders/shader.frag -o shaders/frag.bin
 		echo "Готово"
 	fi
 done
